@@ -3,7 +3,7 @@ package tweet
 import (
 	//	"fmt"
 
-	"github.com/elbashery/tweets/db"
+	"github.com/elbashery/tweets/dbs"
 	"github.com/gofiber/fiber"
 	"github.com/jinzhu/gorm"
 )
@@ -16,10 +16,12 @@ type Tweet struct {
 
 func GetOne(c *fiber.Ctx) {
 	//c.Accepts("application/json")
+	id := c.Params("id")
+	db := dbs.Conn
+	var tweet Tweet
+	db.Find(&tweet, id)
 
-	//t := &Tweet{Body: "a nice Tweet", Id: c.Params("id")}
-	//	fmt.Println(*t)
-	//	c.JSON(*t)
+	c.JSON(tweet)
 }
 func Edite(c *fiber.Ctx) {
 	//	t := &Tweet{Body: "Edit this tweet", Id: c.Params("id")}

@@ -1,4 +1,4 @@
-package db
+package dbs
 
 import (
 	"github.com/jinzhu/gorm"
@@ -6,5 +6,5 @@ import (
 )
 
 var (
-	DBconn *gorm.DB
+	Conn *gorm.DB
 )
