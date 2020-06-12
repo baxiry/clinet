@@ -10,8 +10,8 @@ import (
 
 type Tweet struct {
 	gorm.Model
-	Body string `json:"tweet"`
-	//Id   string `json:"id"`
+	Title string `json:"title"`
+	Body  string `json:"body"`
 }
 
 func GetOne(c *fiber.Ctx) {
@@ -34,7 +34,7 @@ func Remove(c *fiber.Ctx) {
 }
 
 func GetAll(c *fiber.Ctx) {
-	db := db.DBconn
+	db := dbs.Conn
 	var tweets []Tweet
 	db.Find(&tweets)
 
