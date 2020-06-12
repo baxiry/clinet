@@ -24,13 +24,27 @@ func GetOne(c *fiber.Ctx) {
 	c.JSON(tweet)
 }
 func Edite(c *fiber.Ctx) {
-	//	t := &Tweet{Body: "Edit this tweet", Id: c.Params("id")}
-	//	c.JSON(t)
+
+	t := &Tweet{}
+	t.Title = "first"         //c.Params("title")
+	t.Body = "Hello evry one" // c.Params("tweet")}
+	db := dbs.Conn
+	db.Create(t)
+	c.JSON(t)
 }
 
 func Remove(c *fiber.Ctx) {
-	//	t := Tweet{Body: "Delet this tweet", Id: c.Params("id")}
-	//	c.JSON(t)
+	var tweet Tweet
+	db := dbs.Conn
+	id := c.Params("id")
+	db.First(&tweet, id)
+
+	if tweet.Title == "" {
+		c.Status(500).JSON("no tweet find with given ID ")
+		return
+	}
+	db.Delete(&tweet)
+	c.JSON("tweet is deleted")
 }
 
 func GetAll(c *fiber.Ctx) {
