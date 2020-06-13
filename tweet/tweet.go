@@ -3,6 +3,8 @@ package tweet
 import (
 	//	"fmt"
 
+	"fmt"
+
 	"github.com/elbashery/tweets/dbs"
 	"github.com/gofiber/fiber"
 	"github.com/jinzhu/gorm"
@@ -23,14 +25,38 @@ func GetOne(c *fiber.Ctx) {
 
 	c.JSON(tweet)
 }
-func Edite(c *fiber.Ctx) {
 
-	t := &Tweet{}
-	t.Title = "first"         //c.Params("title")
-	t.Body = "Hello evry one" // c.Params("tweet")}
+func New(c *fiber.Ctx) {
+
 	db := dbs.Conn
-	db.Create(t)
-	c.JSON(t)
+	tweet := &Tweet{}
+	if err := c.BodyParser(tweet); err != nil {
+		c.Status(503).JSON(err)
+		fmt.Println("error")
+		return
+	}
+	db.Create(tweet)
+	c.JSON(tweet) // or c.Send("success")
+}
+
+func Update(c *fiber.Ctx) {
+
+	db := dbs.Conn
+	var tweet Tweet
+
+	db.First(&tweet, c.Params("id"))
+
+	/* // I will use params instead BodyParser just for semple and performece
+	if err := c.BodyParser(&tweet); err != nil {
+		c.Status(503).Send(err)
+		fmt.Println(err)
+		return
+	}*/
+
+	// TODO check params is no zero val and handel it
+	db.Model(&tweet).Update("body", c.Params("body")) // &tweet.Body)
+
+	c.Send("success") // or c.JSON("success")
 }
 
 func Remove(c *fiber.Ctx) {
@@ -51,6 +77,5 @@ func GetAll(c *fiber.Ctx) {
 	db := dbs.Conn
 	var tweets []Tweet
 	db.Find(&tweets)
-
 	c.JSON(tweets)
 }

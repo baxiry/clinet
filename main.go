@@ -24,8 +24,8 @@ func initdb() {
 func setUpRouts(app *fiber.App) {
 	app.Get("/tweet/:id", tweet.GetOne)
 	app.Get("/tweets", tweet.GetAll)
-	app.Put("/tweet/:id", tweet.Edite)
-	app.Post("/tweet/:id", tweet.Edite)
+	app.Post("/tweet/new", tweet.New)
+	app.Put("/tweet/:id/:body", tweet.Update)
 	app.Delete("/tweet/:id", tweet.Remove)
 }
 
