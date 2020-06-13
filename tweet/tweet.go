@@ -5,7 +5,7 @@ import (
 
 	"fmt"
 
-	"github.com/elbashery/tweets/dbs"
+	"github.com/bashery/tweets/dbs"
 	"github.com/gofiber/fiber"
 	"github.com/jinzhu/gorm"
 )

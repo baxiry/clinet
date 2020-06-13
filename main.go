@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/elbashery/tweets/dbs"
-	"github.com/elbashery/tweets/tweet"
+	"github.com/bashery/tweets/dbs"
+	"github.com/bashery/tweets/tweet"
 	"github.com/gofiber/fiber"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
