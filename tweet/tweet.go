@@ -23,6 +23,11 @@ func GetOne(c *fiber.Ctx) {
 	var tweet Tweet
 	db.Find(&tweet, id)
 
+	if tweet.Body == "" {
+		c.Send("tweet is no available")
+		return
+	}
+
 	c.JSON(tweet)
 }
 
