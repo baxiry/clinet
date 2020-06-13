@@ -1,4 +1,4 @@
-module github.com/elbashery/tweets
+module github.com/bashery/tweets
 
 go 1.14
 

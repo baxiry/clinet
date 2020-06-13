@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/bashery/tweets/dbs"
+	"github.com/bashery/tweets/routs"
 	"github.com/bashery/tweets/tweet"
 	"github.com/gofiber/fiber"
 	"github.com/jinzhu/gorm"
@@ -21,20 +22,12 @@ func initdb() {
 	dbs.Conn.AutoMigrate(&tweet.Tweet{})
 	fmt.Println("database megrated")
 }
-func setUpRouts(app *fiber.App) {
-	app.Get("/tweet/:id", tweet.GetOne)
-	app.Get("/tweets", tweet.GetAll)
-	app.Post("/tweet/new", tweet.New)
-	app.Put("/tweet/:id/:body", tweet.Update)
-	app.Delete("/tweet/:id", tweet.Remove)
-}
 
 func main() {
 	app := fiber.New()
-	//app.Settings.Immutable = true
 	initdb()
 	defer dbs.Conn.Close()
-	setUpRouts(app)
+	routs.SetUpRouts(app)
 
 	app.Listen(9000)
 }
