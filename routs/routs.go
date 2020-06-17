@@ -2,7 +2,7 @@ package routs
 
 import (
 	//"github.com/bashery/tweets/join"
-	//"github.com/bashery/tweets/login"
+	"github.com/bashery/tweets/login"
 	"github.com/bashery/tweets/tweet"
 	"github.com/bashery/tweets/user"
 	"github.com/gofiber/fiber"
@@ -24,7 +24,7 @@ func SetUpRouts(app *fiber.App) {
 
 	// login
 	//app.Get("/login", login.Get)
-	//app.Post("/login", login.Submit)
+	app.Post("/login", login.Submit)
 
 	// register
 	//app.Get("/join", join.Get)
