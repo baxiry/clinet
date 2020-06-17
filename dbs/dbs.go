@@ -5,6 +5,12 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
+type logers struct {
+	Username string
+	Password string
+}
+
 var (
-	Conn *gorm.DB
+	UsersLog []logers
+	Conn     *gorm.DB
 )

@@ -1,6 +1,8 @@
-package tweet
+package register
 
 import (
+	//	"fmt"
+
 	"fmt"
 
 	"github.com/bashery/tweets/dbs"
@@ -8,13 +10,13 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-type Tweet struct {
+type User struct {
 	gorm.Model
-	Title string `json:"title"`
-	Body  string `json:"body"`
+	Userame  string `json:"title"`
+	fullname string `json:"body"`
 }
 
-func GetOne(c *fiber.Ctx) {
+func Re(c *fiber.Ctx) {
 	//c.Accepts("application/json")
 	id := c.Params("id")
 	db := dbs.Conn
@@ -22,7 +24,7 @@ func GetOne(c *fiber.Ctx) {
 	db.Find(&tweet, id)
 
 	if tweet.Body == "" {
-		c.Send("tweet is no round")
+		c.Send("tweet is no available")
 		return
 	}
 
