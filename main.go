@@ -29,6 +29,7 @@ func initdb() {
 
 func main() {
 	app := fiber.New()
+	app.Static("/", "./assets")
 	initdb()
 	defer dbs.Conn.Close()
 	routs.SetUpRouts(app)
