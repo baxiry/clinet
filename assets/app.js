@@ -1,9 +1,39 @@
+var app6 = new Vue({
+    el: '#app6',
+    data: {
+        message: 'username',
+    }
+})
 
-var app1 = new Vue({
-  el: '#app1',
-  data: {
-      message: 'ok hello vue!'
-  }
+var app5 = new Vue({
+    el: '#app5',
+    data: {
+        message: 'hello every one!',
+    },
+    methods: {
+        reverseMsg: function() {
+            this.message = this.message.split('').reverse().join('')
+        }
+    }
+})
+
+var app4 = new Vue({
+    el: '#app4',
+    data: {
+        todos: [
+            {text: "learn javascript"},
+            {text: "learn learn golang"},
+            {text: "build the big and owsome thing"}
+        ]
+    }
+})
+
+
+var app3 = new Vue({
+    el: '#app3',
+    data: {
+        toggle: true,
+    }
 })
 
 var app2 = new Vue({
@@ -14,9 +44,9 @@ var app2 = new Vue({
     }
 })
 
-var app3 = new Vue({
-    el: '#app3',
-    data: {
-        toggle: true,
-    }
+var app1 = new Vue({
+  el: '#app1',
+  data: {
+      message: 'ok hello vue!'
+  }
 })
