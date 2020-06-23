@@ -6,6 +6,18 @@
         <title>Tweets</title>
     </head>
 <body>
+<div id="app8">
+<ol>
+  <!-- Create an instance of the todo-item component -->
+  <todo-item 
+    v-for="item in todos"
+    v-bind:todo="item"
+    v-bind:key='item.id'
+
+      ></todo-item>
+</ol>
+</div>
+
     <div id="app6">
         <p>{{ message }}</p>
         <input v-model="message">
@@ -20,18 +32,11 @@
             <li v-for="todo in todos">{{todo.text}}</li>
         </ol>
     </div><br>
-    <div id="app3" v-if="toggle">
-        app3 : toggle this by vue
+    <button id='app7' v-on:click="toggle">toggle</button>
+    <div id="app3" v-if="show">
+        app3 :
+        toggle this by vue
     </div><br>
-    <div id="app2">
-        <span v-bind:title="message">
-            app2 : Hover your mouse over me for a few seconds to see my dynamically bound title!
-        </span>   
-    </div><br>        
-    <div id="app1"><br>
-        app1 : {{ message }}
-    </div><br>
-<h4>app7:</h4>
     <script src="app.js"></script>
 </body>
 </html>

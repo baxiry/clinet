@@ -1,3 +1,38 @@
+// Define a new component called todo-item
+Vue.component('todo-item', {
+    props: ['todo'],
+    template: '<li>{{todo.text}}</li>',
+})
+
+var app8 = new Vue({
+    el: '#app8',
+    data: {
+        todos:[
+            {id: 0, text: "buil big progict"},
+            {id: 1, text: "buil awsome progict"},
+            {id: 2, text: "buil great progict"},
+        ]
+    }
+})
+
+//Now you can compose it in another component’s template:
+
+
+var app7 = new Vue({
+    el: '#app7',
+    data: {},
+    methods: {
+        toggle: function() {
+            s = app3.show
+            if ( app3.show == false) {
+                app3.show = true
+            } else {
+                app3.show = false
+            } 
+        }
+    }
+
+})
 var app6 = new Vue({
     el: '#app6',
     data: {
@@ -22,8 +57,6 @@ var app4 = new Vue({
     el: '#app4',
     data: {
         todos: [
-            {text: "learn javascript"},
-            {text: "learn learn golang"},
             {text: "build the big and owsome thing"}
         ]
     }
@@ -33,21 +66,8 @@ var app4 = new Vue({
 var app3 = new Vue({
     el: '#app3',
     data: {
-        toggle: true,
-    }
+        show: true,
+    },
 })
 
-var app2 = new Vue({
-    el: '#app2',
-    data: {
-       message: 'som discreptYou loaded this page on '+
-        new Date().toLocaleString()
-    }
-})
 
-var app1 = new Vue({
-  el: '#app1',
-  data: {
-      message: 'ok hello vue!'
-  }
-})
