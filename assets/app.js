@@ -11,20 +11,29 @@ const tweets = new Vue({
   }
 });
 */
-const ts = new Vue({
-    el: '#app9',
+var ts = new Vue({
+  el: '#app9',
   data: {
     tweets: []
   },
-    mounted() {
-       axios.get('http://localhost:9000/tweets')
+  mounted() {
+      axios.get('http://localhost:9000/tweets')
       .then(response => (this.tweets = response.data))
-        console.log(respons)
   }
 });
 
+async function HeadRequest() {
 
+  let res = await axios.head('http://localhost:9000/tweets');
+  let data = await axios.get('http://localhost:9000/tweets');
 
+  console.log(`Status: ${res.status}`)
+  console.log(`Date: ${res.headers.date}`)
+  console.log(typeOf(data))
+    //console.log(`Data: ${dataeader}`)
+}
+
+HeadRequest();
 
 // Define a new component called todo-item
 Vue.component('todo-item', {
@@ -40,7 +49,8 @@ var app8 = new Vue({
             {id: 1, text: "buil awsome progict"},
             {id: 2, text: "buil great progict"},
         ]
-    }
+    },
+
 })
 
 //Now you can compose it in another component’s template:
