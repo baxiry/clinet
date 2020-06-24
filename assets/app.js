@@ -1,3 +1,31 @@
+/*
+const tweets = new Vue({
+     el: '#app9',
+  data: {
+    tweets: [
+      {title: "the very first post", body: "lorem ipsum some test dimpsum"},
+      {title: "and then there was the second", body: "lorem ipsum some test dimsum"},
+      {title: "third time's a charm", body: "lorem ipsum some test dimsum"},
+      {title: "four the last time", body: "lorem ipsum some test dimsum"}
+    ]
+  }
+});
+*/
+const ts = new Vue({
+    el: '#app9',
+  data: {
+    tweets: []
+  },
+    mounted() {
+       axios.get('http://localhost:9000/tweets')
+      .then(response => (this.tweets = response.data))
+        console.log(respons)
+  }
+});
+
+
+
+
 // Define a new component called todo-item
 Vue.component('todo-item', {
     props: ['todo'],
