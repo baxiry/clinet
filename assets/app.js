@@ -23,14 +23,14 @@ var ts = new Vue({
 });
 
 async function HeadRequest() {
-
   let res = await axios.head('http://localhost:9000/tweets');
   let data = await axios.get('http://localhost:9000/tweets');
 
   console.log(`Status: ${res.status}`)
-  console.log(`Date: ${res.headers.date}`)
-  console.log(typeOf(data))
-    //console.log(`Data: ${dataeader}`)
+  //console.log(`Date: ${res.headers.date}`)
+    for (var i= 0; i< data.data.lenght; i++){
+  console.log(data.data[i].body)
+    }
 }
 
 HeadRequest();
