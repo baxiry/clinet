@@ -33,11 +33,13 @@ func New(c *fiber.Ctx) {
 
 	db := dbs.Conn
 	tweet := &Tweet{}
-	if err := c.BodyParser(tweet); err != nil {
-		c.Status(503).JSON(err)
-		fmt.Println("error")
-		return
-	}
+	tweet.Title = c.Params("title")
+	tweet.Body = c.Params("body")
+	//if err := c.BodyParser(tweet); err != nil {
+	//	c.Status(503).JSON(err)
+	//	fmt.Println("error")
+	//	return
+	//}
 	db.Create(tweet)
 	c.JSON(tweet) // or c.Send("success")
 }
