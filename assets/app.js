@@ -3,10 +3,7 @@ var tweets = new Vue({
   data: {
     tweets: []
   },
-  mounted() {
-      //axios.get('http://localhost:9000/tweets')
-      //.then(response => (this.tweets = response.data))
-  }
+  mounted() {}
 });
 
 //Now you can compose it in another component’s template:
@@ -27,22 +24,16 @@ var Get_tweets = new Vue({
 
 var Post_tweets = new Vue({
     el: '#post_tweets',
-    data:{
-        tweets:[
-            {title: "new title", body: "new body"},
-        ]
-    },
+    //data:{},
     methods: {
         post_tweets: function() {
-            axios.post('http://localhost:9000/tweet/new/ok/"some data"', {
-                title: this.title,
-                body: this.body,
-            })
+            axios.post('http://localhost:9000/tweet/new',
+            {title: "new title", body: "new body"})
             .then(function (response) {
-                currentObj.output = response.data;
+                console.log(response.data)
             })
             .catch(function (error) {
-                currentObj.output = error;
+                console.log("Have an: "+ error)
             });
         }
     }

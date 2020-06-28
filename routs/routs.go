@@ -12,7 +12,7 @@ func SetUpRouts(app *fiber.App) {
 	// tweet opiration
 	app.Get("/tweet/:id", tweet.GetOne)
 	app.Get("/tweets", tweet.GetAll)
-	app.Post("/tweet/new/:title/:body", tweet.New)
+	app.Post("/tweet/new", tweet.New)
 	app.Put("/tweet/:id/:body", tweet.Update)
 	app.Delete("/tweet/:id", tweet.Remove)
 
