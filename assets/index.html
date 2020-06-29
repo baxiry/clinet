@@ -7,10 +7,14 @@
         <title>Tweets</title>
     </head>
 <body>
-    <div id='post_tweets'>
+    <div id='post_tweet'>
     <input v-model="tweet.body" placeholder="type tweet">
-    <button  v-on:click="post_tweets">post tweet</button>
+    <button  v-on:click="post_tweet">post tweet</button>
     <p v-if="nil">please type tweet</p>
+    </div>
+    <div id='del_tweet'>
+        <input v-model='id' placeholder="type tweet id">
+        <button v-on:click="delete_tweet">delete</button>
     </div>
     <button id='get_tweets' v-on:click="get_tweets">refresh</button>
 
