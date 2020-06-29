@@ -1,7 +1,7 @@
 package login
 
 import (
-	//"fmt"
+	"fmt"
 
 	//"github.com/bashery/tweets/dbs"
 	"github.com/gofiber/fiber"
@@ -9,8 +9,8 @@ import (
 )
 
 type User struct {
-	Name string
-	Pass string
+	Name string `json:"name"`
+	Pass string `json:"pass"`
 }
 
 func Submit(c *fiber.Ctx) {
@@ -19,10 +19,11 @@ func Submit(c *fiber.Ctx) {
 	user := &User{}
 	if err := c.BodyParser(user); err != nil {
 		c.Status(503).JSON(err)
-		//fmt.Println("here error")
+		fmt.Println("here error")
 		return
 	}
 	//db.Create(profile)
+	fmt.Println(user)
 	if user.Name == "adam" && user.Pass == "1234" {
 		c.JSON(user) // or c.Send("success")
 		return

@@ -46,19 +46,11 @@ func New(c *fiber.Ctx) {
 }
 
 func Update(c *fiber.Ctx) {
-
 	db := dbs.Conn
 	var tweet Tweet
-
 	db.First(&tweet, c.Params("id"))
-
-	/* // I will use params instead BodyParser just for semple and performece
-	if err := c.BodyParser(&tweet); err != nil {
-		c.Status(503).Send(err)
-		fmt.Println(err)
-		return
-	}*/
-
+	// I will use params instead BodyParser just for semple and test performece
+	// if err := c.BodyParser(&tweet); err != nil {c.Status(503).Send(err);	fmt.Println(err);return;}
 	// TODO check params is no zero val and handel it
 	db.Model(&tweet).Update("body", c.Params("body")) // &tweet.Body)
 

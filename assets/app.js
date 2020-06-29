@@ -3,11 +3,10 @@ var tweets = new Vue({
   data: {
     tweets: []
   },
-  mounted() {}
+  //mounted() {}
 });
 
-//Now you can compose it in another component’s template:
-var i = 0;
+// get all tweets
 var Get_tweets = new Vue({
     el: '#get_tweets',
     data: {},
@@ -15,26 +14,48 @@ var Get_tweets = new Vue({
        get_tweets: function() {
             axios.get('http://localhost:9000/tweets')
             .then(response => (tweets.tweets = response.data))
-            axios.post('localhost:9000/tweet/new/idea/"ok everything is good"');
-            console.log("is ok")
        }
-    },
-      
+    }  
 })
 
+// post new tweet
 var Post_tweets = new Vue({
     el: '#post_tweets',
-    //data:{},
+    data:{
+        nil : false,
+        tweet: {title:"new topic", }
+    },
     methods: {
-        post_tweets: function() {
-            axios.post('http://localhost:9000/tweet/new',
-            {title: "new title", body: "new body"})
-            .then(function (response) {
-                console.log(response.data)
-            })
-            .catch(function (error) {
-                console.log("Have an: "+ error)
-            });
-        }
+        post_tweets: function() { // undefined
+            //console.log(this.tweet.body == undefined )
+            if (this.tweet.body != undefined) {
+                this.nil = false
+
+                // hide wornning message
+                // this.nil = false,
+
+                // post tweeti
+                axios.post('http://localhost:9000/tweet/new',
+                this.tweet,
+                // or post : {title: "new title", body: "new body"}
+                )
+                .then(function (response) {
+                    //console.log(response.data)
+                })
+                .catch(function (error) {
+                     console.log("Have an: "+ error)
+                });
+            } else {
+                // show warning message
+                this.nil = true
+            }
+        },
+    }
+})
+
+var emptyt = new Vue({
+    //el : '#nil',
+    methods:{
+
     }
 })

@@ -7,7 +7,11 @@
         <title>Tweets</title>
     </head>
 <body>
-    <button id='post_tweets' v-on:click="post_tweets">post tweet</button>
+    <div id='post_tweets'>
+    <input v-model="tweet.body" placeholder="type tweet">
+    <button  v-on:click="post_tweets">post tweet</button>
+    <p v-if="nil">please type tweet</p>
+    </div>
     <button id='get_tweets' v-on:click="get_tweets">refresh</button>
 
 <!-- ./index.html -->
@@ -18,7 +22,6 @@
       {{ tweet.body }} <!--{{tweet.CreatedAt}}-->
     </div>
 </div>
-
     </div><br>
     <script src="app.js"></script>
 </body>
