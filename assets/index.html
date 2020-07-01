@@ -7,6 +7,19 @@
         <title>Tweets</title>
     </head>
 <body>
+    <!--<p id='to_tweets'></p>-->
+    <div id='login'>
+        login:
+        <input type="text" placeholder='username'>
+        <input type="password" placeholder='password'>
+        <button id='submit'>login</button>
+    </div>
+    <div id='register'>
+        register:
+        <input type="text" placeholder='username'>
+        <input type="password" placeholder='password'>
+        <button id='submit'>register</button>
+    </div>
     <div id='post_tweet'>
     <input v-model="tweet.body" placeholder="type tweet">
     <button  v-on:click="post_tweet">post tweet</button>

@@ -53,6 +53,7 @@ var Post_tweets = new Vue({
     }
 })
 
+// delete tweet
 var delete_tweet = new Vue({
     el : '#del_tweet',
     data: {
@@ -71,3 +72,28 @@ var delete_tweet = new Vue({
         } 
     }
 })
+
+// router
+const NotFound = { template: '<p>Page not found</p>' }
+const Home = { template: '<p>home page</p>' }
+const Tweets = { template: '<p>tweets page</p>' }
+
+/*
+const routes = {
+  '/': Home,
+  '/tweets': Tweets
+}
+
+new Vue({
+    el: '#to_tweets',
+  data: {
+    currentRoute: window.location.pathname
+  },
+  computed: {
+    ViewComponent () {
+      return routes[this.currentRoute] || NotFound
+    }
+  },
+  render (h) { return h(this.ViewComponent) }
+})
+*/

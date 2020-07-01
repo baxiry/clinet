@@ -23,7 +23,7 @@ func SetUpRouts(app *fiber.App) {
 	app.Get("/user/:id", user.Remove)
 
 	// login
-	//app.Get("/login", login.Get)
+	app.Get("/login", login.Login)
 	app.Post("/login", login.Submit)
 
 	// register

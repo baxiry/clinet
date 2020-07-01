@@ -13,6 +13,17 @@ type User struct {
 	Pass string `json:"pass"`
 }
 
+func Login(c *fiber.Ctx) {
+	user := &User{}
+	if err := c.BodyParser(user); err != nil {
+		c.Status(503).JSON(err)
+		fmt.Println("user parser error")
+		return
+	}
+	fmt.Println(*user)
+
+}
+
 func Submit(c *fiber.Ctx) {
 
 	//db := dbs.Conn
@@ -23,7 +34,7 @@ func Submit(c *fiber.Ctx) {
 		return
 	}
 	//db.Create(profile)
-	fmt.Println(user)
+	fmt.Println(*user)
 	if user.Name == "adam" && user.Pass == "1234" {
 		c.JSON(user) // or c.Send("success")
 		return
