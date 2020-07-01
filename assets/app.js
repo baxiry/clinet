@@ -1,7 +1,17 @@
+var login = new Vue({
+    el:'#login',
+    data: {},
+    methods: {
+        login: function() {
+
+        }
+    }
+})
+
 var tweets = new Vue({
-  el: '#app9',
+  el: '#tweets',
   data: {
-    tweets: []
+      tweets: []
   },
   //mounted() {}
 });
@@ -9,7 +19,7 @@ var tweets = new Vue({
 // get all tweets
 var Get_tweets = new Vue({
     el: '#get_tweets',
-    data: {},
+    
     methods: {
        get_tweets: function() {
             axios.get('http://localhost:9000/tweets')
@@ -73,27 +83,4 @@ var delete_tweet = new Vue({
     }
 })
 
-// router
-const NotFound = { template: '<p>Page not found</p>' }
-const Home = { template: '<p>home page</p>' }
-const Tweets = { template: '<p>tweets page</p>' }
 
-/*
-const routes = {
-  '/': Home,
-  '/tweets': Tweets
-}
-
-new Vue({
-    el: '#to_tweets',
-  data: {
-    currentRoute: window.location.pathname
-  },
-  computed: {
-    ViewComponent () {
-      return routes[this.currentRoute] || NotFound
-    }
-  },
-  render (h) { return h(this.ViewComponent) }
-})
-*/
