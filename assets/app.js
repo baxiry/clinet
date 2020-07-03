@@ -1,14 +1,12 @@
 // definde router
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
-
-const routes = [
-  { path: '/foo', component: Foo },
-  { path: '/bar', component: Bar }
-];
+//const Foo = { template: '<div>foo</div>' }
+const Bar = { template: '<div>this is big baaar</div>'   }
 
 const router = new VueRouter({
-  routes // short for `routes: routes`
+    routes: [
+        { path: '/foo', component: { template: '<div>this is big foo</div>' }  },
+        { path: '/bar', component: Bar }
+    ] // short for `routes: routes`
 })
 
 const app = new Vue({
