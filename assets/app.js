@@ -1,3 +1,5 @@
+// TODO make all flles one file
+
 // definde router
 //const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>this is big baaar</div>'   }
