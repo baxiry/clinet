@@ -16,7 +16,7 @@ import (
 func initdb() {
 	fmt.Println("hello")
 	var err error
-	dbs.Conn, err = gorm.Open("sqlite3", "tweets.db")
+	dbs.Conn, err = gorm.Open("sqlite3", "../tweets.db")
 	if err != nil {
 		fmt.Println(err)
 		panic("error when open database")
