@@ -14,17 +14,16 @@ import (
 )
 
 func initdb() {
-	fmt.Println("hello")
 	var err error
 	dbs.Conn, err = gorm.Open("sqlite3", "../tweets.db")
 	if err != nil {
 		fmt.Println(err)
 		panic("error when open database")
 	}
-	fmt.Println("database successfully connection")
+	//fmt.Println("database successfully connection")
 	dbs.Conn.AutoMigrate(&tweet.Tweet{})
 	dbs.Conn.AutoMigrate(&user.Profile{})
-	fmt.Println("database megrated")
+	//fmt.Println("database megrated")
 }
 
 func main() {
@@ -34,5 +33,5 @@ func main() {
 	defer dbs.Conn.Close()
 	routs.SetUpRouts(app)
 
-	app.Listen(9000)
+	app.Listen(8000)
 }

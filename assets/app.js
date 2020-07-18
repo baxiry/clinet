@@ -40,7 +40,7 @@ var Get_tweets = new Vue({
     
     methods: {
        get_tweets: function() {
-            axios.get('http://localhost:9000/tweets')
+            axios.get('http://localhost:8000/tweets')
             .then(response => (tweets.tweets = response.data))
        }
     }  
@@ -63,7 +63,7 @@ var Post_tweets = new Vue({
                 // this.nil = false,
 
                 // post tweeti
-                axios.post('http://localhost:9000/tweet/new',
+                axios.post('http://localhost:8000/tweet/new',
                 this.tweet,
                 // or post : {title: "new title", body: "new body"}
                 )
@@ -90,7 +90,7 @@ var delete_tweet = new Vue({
     methods:{
         delete_tweet: function() { // undefined
             // delete tweeti
-            axios.delete('http://localhost:9000/tweet/'+this.id)
+            axios.delete('http://localhost:8000/tweet/'+this.id)
             //.then(function (response) {
                 //console.log(response.data)
             //})
