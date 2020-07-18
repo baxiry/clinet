@@ -15,7 +15,7 @@ import (
 
 func initdb() {
 	var err error
-	dbs.Conn, err = gorm.Open("sqlite3", "../tweets.db")
+	dbs.Conn, err = gorm.Open("sqlite3", "../.tweets.db")
 	if err != nil {
 		fmt.Println(err)
 		panic("error when open database")
@@ -27,6 +27,7 @@ func initdb() {
 }
 
 func main() {
+	auth()
 	app := fiber.New()
 	app.Static("/", "./assets")
 	initdb()
