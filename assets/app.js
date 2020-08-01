@@ -1,30 +1,3 @@
-// TODO make all flles one file
-
-// definde router
-//const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>this is big baaar</div>'   }
-
-const router = new VueRouter({
-    routes: [
-        { path: '/foo', component: { template: '<div>this is big foo</div>' }  },
-        { path: '/bar', component: Bar }
-    ] // short for `routes: routes`
-})
-
-const app = new Vue({
-  router
-}).$mount('#app')
-
-
-var login = new Vue({
-    el:'#login',
-    data: {},
-    methods: {
-        login: function() {
-
-        }
-    }
-})
 
 var tweets = new Vue({
   el: '#tweets',

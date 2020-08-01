@@ -7,7 +7,6 @@ import (
 	"github.com/bashery/tweets/routs"
 	"github.com/bashery/tweets/tweet"
 	"github.com/bashery/tweets/user"
-	//"github.com/bashery/tweets/user"
 	"github.com/gofiber/fiber"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
@@ -27,8 +26,9 @@ func initdb() {
 }
 
 func main() {
-	auth()
+	//auth()
 	app := fiber.New()
+	//app.Static("/", "/home/fedora/assets")
 	app.Static("/", "./assets")
 	initdb()
 	defer dbs.Conn.Close()
