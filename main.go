@@ -6,7 +6,6 @@ import (
 	"github.com/bashery/tweets/dbs"
 	"github.com/bashery/tweets/routs"
 	"github.com/bashery/tweets/tweet"
-	"github.com/bashery/tweets/user"
 	"github.com/gofiber/fiber"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
@@ -21,15 +20,14 @@ func initdb() {
 	}
 	//fmt.Println("database successfully connection")
 	dbs.Conn.AutoMigrate(&tweet.Tweet{})
-	dbs.Conn.AutoMigrate(&user.Profile{})
+	//dbs.Conn.AutoMigrate(&user.Profile{})
 	//fmt.Println("database megrated")
 }
 
 func main() {
 	//auth()
 	app := fiber.New()
-	//app.Static("/", "/home/fedora/assets")
-	app.Static("/", "./assets")
+	app.Static("/", "./assets", fiber.Static{ByteRange: true})
 	initdb()
 	defer dbs.Conn.Close()
 	routs.SetUpRouts(app)

@@ -1,11 +1,14 @@
 package tweet
 
 import (
+	"bufio"
 	"fmt"
+	"time"
 
 	"github.com/bashery/tweets/dbs"
 	"github.com/gofiber/fiber"
 	"github.com/jinzhu/gorm"
+	"github.com/valyala/fasthttp"
 )
 
 type Tweet struct {
@@ -15,6 +18,7 @@ type Tweet struct {
 }
 
 func GetOne(c *fiber.Ctx) {
+
 	//c.Accepts("application/json")
 	id := c.Params("id")
 	db := dbs.Conn
@@ -32,6 +36,7 @@ func GetOne(c *fiber.Ctx) {
 func New(c *fiber.Ctx) {
 
 	db := dbs.Conn
+
 	tweet := &Tweet{}
 	// TODO : hand zero paramse,
 	//tweet.Title = c.Params("title")

@@ -41,7 +41,7 @@ var Post_tweets = new Vue({
                 // or post : {title: "new title", body: "new body"}
                 )
                 .then(function (response) {
-                    //console.log(response.data)
+                    console.log(response.data)
                 })
                 .catch(function (error) {
                      console.log("Have an: "+ error)
