@@ -5,12 +5,45 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/eiannone/keyboard"
 	"github.com/gorilla/websocket"
 )
 
 var dbName string = "test"
 
+func input() {
+	if err := keyboard.Open(); err != nil {
+		panic(err)
+	}
+	defer func() {
+		_ = keyboard.Close()
+	}()
+
+	fmt.Println("Press ESC to quit")
+	for {
+		_, key, err := keyboard.GetKey()
+		if err != nil {
+			panic(err)
+		}
+		if key == keyboard.KeyArrowUp {
+			fmt.Println(" Up ")
+			continue
+		}
+		if key == keyboard.KeyArrowDown {
+			fmt.Println(" Down ")
+			continue
+		}
+		if key == keyboard.KeyEsc {
+			fmt.Println()
+			break
+		}
+	}
+}
+
 func main() {
+
+	input()
+
 	socketUrl := "ws://localhost:1111/ws"
 
 	conn, _, err := websocket.DefaultDialer.Dial(socketUrl, nil)
